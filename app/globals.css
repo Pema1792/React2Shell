@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #080a0f;
+  --foreground: #ededed;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@keyframes caret-blink {
+  0%,
+  62% {
+    opacity: 1;
+  }
+  63%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes console-flash {
+  0% {
+    border-color: rgba(52, 211, 153, 0.8);
+    box-shadow:
+      0 0 0 1px rgba(52, 211, 153, 0.45),
+      0 0 56px rgba(52, 211, 153, 0.28);
+  }
+  100% {
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@keyframes flash-sweep {
+  0% {
+    transform: translateX(-130%);
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(130%);
+    opacity: 0;
+  }
+}
+
+@keyframes idle-glow {
+  0%,
+  100% {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    border-color: rgba(52, 211, 153, 0.28);
+  }
+}
+
+.caret {
+  animation: caret-blink 1.15s steps(1, end) infinite;
+}
+
+.console-idle {
+  animation: idle-glow 2.6s ease-in-out infinite;
+}
+
+.fade-up {
+  animation: fade-up 0.4s ease-out both;
+}
+
+.console-flash {
+  animation: console-flash 0.9s ease-out forwards;
+}
+
+.flash-sweep {
+  animation: flash-sweep 0.7s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caret,
+  .fade-up,
+  .console-flash,
+  .flash-sweep,
+  .console-idle {
+    animation: none;
+  }
+}
